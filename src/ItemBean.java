@@ -8,6 +8,7 @@ public class ItemBean {
     private String itemName;
     private long price;
     private String desc;
+    private String imgUrl;
 
     public long getId() {
         return id;
@@ -39,5 +40,13 @@ public class ItemBean {
 
     public void setDesc(String desc) {
         this.desc = desc;
+    }
+
+    public void setImgUrl(String imgUrl) {
+        this.imgUrl = imgUrl;
+    }
+
+    public String getImgUrl() {
+        return imgUrl;
     }
 }

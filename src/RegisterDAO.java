@@ -1,5 +1,3 @@
-package alreadywritten;
-
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
@@ -20,6 +18,9 @@ public class RegisterDAO {
 			}
 			
 			PreparedStatement ps = con.prepareStatement("insert into register1810 values(?,?,?,?,?,?,?,?,?,?,?,?)");
+			PreparedStatement pst = con.prepareStatement("INSERT INTO USERSTATUS VALUES (?,?)");
+		    pst.setString(1, register.getEmail1());
+		    pst.setString(2, "ACTIVE");
 
 		    ps.setString(1, register.getFname());
 			ps.setString(2, register.getLname());
@@ -36,9 +37,13 @@ public class RegisterDAO {
 
 			result = ps.executeUpdate();
 			System.out.println(result);
-		
 
-		return result;
+		int result2 = pst.executeUpdate();
+		if (result2 == 1 && result == 1) {
+			return 1;
+		} else {
+			return 0;
+		}
 
 	}
 

@@ -7,10 +7,19 @@
         <servlet-name>ShoppingCenter</servlet-name>
         <servlet-class>ShoppingCenter</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>CheckoutCart</servlet-name>
+        <servlet-class>CheckoutCart</servlet-class>
+    </servlet>
     
     <servlet-mapping>
         <servlet-name>ShoppingCenter</servlet-name>
         <url-pattern>/shoppingcenter</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>CheckoutCart</servlet-name>
+        <url-pattern>/checkoutcart</url-pattern>
     </servlet-mapping>
 
 </web-app>
