@@ -39,6 +39,7 @@ public class LoginDAO {
 					else
 						result = 0;
 				}
+
 		return result;
 	}
 

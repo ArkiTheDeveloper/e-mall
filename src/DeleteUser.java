@@ -5,12 +5,11 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
-import java.util.List;
 
 /**
  * Admin page for administration purpose
  */
-public class AdminPage extends HttpServlet {
+public class DeleteUser extends HttpServlet {
     /**
      * Method to open the admin page
      * @param request httpRequest
@@ -25,20 +24,21 @@ public class AdminPage extends HttpServlet {
                 "<html> "+
                 "<head> <title> ShoppingCenter </title></head>" +
                 "<body>" +
-                        "<h1> This page is for deleting the requested users </h1>" +
                         "<h3>Please select the below links for other options </h3>" +
                         "<h4> <a href=\"feedback\" > Feedback</a></h4>" +
+                        "<h4> <a href=\"admin\" > Admin - Home </a></h4>" +
                         "<h4> <a href=\"reports\"> Reports </h4>"
         );
 
         boolean userAuthenticated = AuthenticationService.authenticateUser(request);
             if (userAuthenticated) {
                 //User is authenticated
-                /**
-                 * Method to display the accounts for de-registration
-                 */
                 try {
-                    deRegisterUser(request, response);
+                   if (deleteUser(request, response)){
+                     out.println("<h1>Successful</h1>");
+                   } else {
+                       out.println("<h1>UnSuccessful!!</h1>");
+                   }
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
@@ -50,23 +50,8 @@ public class AdminPage extends HttpServlet {
                 "</html>");
     }
 
-    private void deRegisterUser(HttpServletRequest request, HttpServletResponse response) throws IOException, SQLException, ClassNotFoundException {
-        PrintWriter out = response.getWriter();
-        LoginDAO dao = new LoginDAO();
-        printListOfDeRegisteringUsers(out, dao.getListOfDeRegisteringUsers());
+    private boolean deleteUser(HttpServletRequest request, HttpServletResponse response) throws SQLException, ClassNotFoundException {
+      return ItemsDAO.deleteUsers(request.getParameterValues("Delete"));
 
     }
-
-    private void printListOfDeRegisteringUsers(PrintWriter out, List<String> listOfDeRegisteringUsers) {
-        out.println("<h1> Please check the box to remove the users </h1>" +
-                "<table><form action = \"deleteuser\" >" +
-                "<th>Username</th>");
-        for (String user : listOfDeRegisteringUsers) {
-            out.println("<td>"+user+"</td>");
-            out.println("<input type = \"checkbox\" name = \" delete\" value = \" user\" ");
-        }
-        out.println("<input type = \"submit\" value = \"Delete\" " +
-                "</form></table>");
-    }
-
 }

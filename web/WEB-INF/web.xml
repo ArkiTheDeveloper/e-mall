@@ -11,7 +11,14 @@
         <servlet-name>CheckoutCart</servlet-name>
         <servlet-class>CheckoutCart</servlet-class>
     </servlet>
-    
+    <servlet>
+        <servlet-name>AdminPage</servlet-name>
+        <servlet-class>AdminPage</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>DeleteUser</servlet-name>
+        <servlet-class>DeleteUser</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>ShoppingCenter</servlet-name>
         <url-pattern>/shoppingcenter</url-pattern>
@@ -21,5 +28,16 @@
         <servlet-name>CheckoutCart</servlet-name>
         <url-pattern>/checkoutcart</url-pattern>
     </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>AdminPage</servlet-name>
+        <url-pattern>/admin</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>DeleteUser</servlet-name>
+        <url-pattern>/deleteuser</url-pattern>
+    </servlet-mapping>
+
 
 </web-app>

@@ -63,7 +63,7 @@ public class ShoppingCenter extends HttpServlet {
                 "<html> "+
                 "<head>" +
                 "<link rel = \"stylesheet\" type = \"text/css\" href = \"css\\ShoppingCenter.css\" ></link>" +
-                " <title> ShoppingCenter </title></head>" +
+                "<title> ShoppingCenter </title></head>" +
                 "<body>" +
                 "<div>" +
                 "<center>" +

@@ -101,4 +101,23 @@ public class ItemsDAO {
         }
         return itemsListWithDetails;
     }
+
+    public static boolean deleteUsers(String[] deletes) throws SQLException, ClassNotFoundException {
+        Connection dbConnection = JDBCUtils.getConnection();
+        if (dbConnection == null) {
+            throw new SQLException("Connection to DB failed ");
+        }
+        boolean result;
+        PreparedStatement statement = dbConnection.prepareStatement("DELETE FROM register1810 WHERE E_mail_1 = ?");
+        PreparedStatement statementt = dbConnection.prepareStatement("UPDATE USERSTATUS SET STATUS = 'INACTIVE' WHERE USERNAME = ? ");
+        for (String delete : deletes) {
+            statement.setString(1, delete.replace("/",""));
+            statementt.setString(1, delete.replace("/",""));
+            result = statement.execute() && statementt.execute();
+            if (!result)
+                return false;
+        }
+
+        return true;
+    }
 }
