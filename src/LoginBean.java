@@ -1,5 +1,3 @@
-package alreadywritten;
-
 public class LoginBean {
 
 		private String user;

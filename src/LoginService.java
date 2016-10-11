@@ -1,5 +1,3 @@
-package alreadywritten;
-
 import java.sql.SQLException;
 
 public class LoginService {

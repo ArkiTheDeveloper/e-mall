@@ -1,5 +1,3 @@
-package alreadywritten;
-
 public class RegisterBean {
 
 	private String fname,lname,pwd,cpwd,dob,address,gender,email1,email2,country;
